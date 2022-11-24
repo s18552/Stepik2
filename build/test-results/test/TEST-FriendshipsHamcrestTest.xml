@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FriendshipsHamcrestTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-11-24T20:04:50" hostname="DESKTOP-55GE5M0" time="0.026">
+  <properties/>
+  <testcase name="checkIfAreFriendsOtherTest()" classname="FriendshipsHamcrestTest" time="0.017"/>
+  <testcase name="checkThrowsExceptionTest()" classname="FriendshipsHamcrestTest" time="0.002"/>
+  <testcase name="checkIfAreNotFriendsTest()" classname="FriendshipsHamcrestTest" time="0.001"/>
+  <testcase name="checkIfAreFriendsTest()" classname="FriendshipsHamcrestTest" time="0.001"/>
+  <testcase name="checkLengthListFriendshipsTest()" classname="FriendshipsHamcrestTest" time="0.002"/>
+  <testcase name="createInstance()" classname="FriendshipsHamcrestTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
