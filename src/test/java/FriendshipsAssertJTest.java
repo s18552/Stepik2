@@ -1,9 +1,9 @@
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+
 
 class FriendshipsAssertJTest {
     private Friendships friendships;
@@ -76,11 +76,48 @@ class FriendshipsAssertJTest {
                 .hasSize(3)
                 .contains(person2,person3,person4);
 
+
     }
     @Test
     public void checkThrowsExceptionTest(){
         assertThatThrownBy(() -> friendships.getFriendsList(null))
                 .isInstanceOf(NullPointerException.class);
+    }
+
+    @Test
+    public void checkIfListHasLeszekAndIsFirstFriend() {
+        //given
+        String name1="Andrzej";
+        String name2="Jan";
+        String name3="Leszek";
+
+        //when
+        friendships.makeFriends(name1,name3);
+        friendships.makeFriends(name1,name2);
+
+        //then
+        FriendshipsAssert.assertThat(friendships)
+                .hasFriendWithNameLeszek(name1)
+                .checkIfFriendIsOnFirstPosition(name1, name3);
+    }
+
+    @Test
+    public void checkIfListHasntLeszekAndIsFirstFriend() {
+        //given
+        String name1="Andrzej";
+        String name2="Jan";
+        String name3="Leszek1";
+
+        //when
+        friendships.makeFriends(name1,name3);
+        friendships.makeFriends(name1,name2);
+
+        //then
+        assertThatThrownBy(()->FriendshipsAssert.assertThat(friendships)
+                .hasFriendWithNameLeszek(name1)
+                .checkIfFriendIsOnFirstPosition(name1, name3))
+                .hasMessageStartingWith("Expected Leszek from");
+
     }
 
     @AfterEach

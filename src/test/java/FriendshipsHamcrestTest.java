@@ -2,11 +2,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.concurrent.Callable;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+
 
 
 public class FriendshipsHamcrestTest {
@@ -91,6 +91,41 @@ public class FriendshipsHamcrestTest {
     @Test
     public void checkThrowsExceptionTest(){
         assertThat(exceptionOf(() -> friendships.getFriendsList(null)), isA(NullPointerException.class));
+    }
+
+    @Test
+    public void checkIfListHasLeszekAndIsFirstFriend(){
+        //given
+        String person1="Bartek";
+        String person2="Leszek";
+
+
+        //when
+        friendships.makeFriends(person1, person2);
+
+        //then
+        assertThat(friendships.getFriendsList(person1),
+                HasLeszekInList.hasLeszekInList()
+                );
+
+    }
+
+    @Test
+    public void checkIfListIsSmallerThan13(){
+        //given
+        String person1="Bartek";
+        String person2="Leszek";
+
+
+        //when
+        friendships.makeFriends(person1, person2);
+
+        //then
+        assertThat(friendships.getFriendsList(person1),
+                ListSmallerThan13.listSizeIsSmallerThan13()
+        );
+
+
     }
 
 
